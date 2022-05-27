@@ -20,5 +20,6 @@ int vivienda_modificar(Vivienda* pArray, int indexPosicion, int opcionElegida);
 int vivienda_baja(Vivienda* pArray, int indexPosicion);
 int vivienda_ordenarPorNombre(Vivienda* pArray, int largo);
 int vivienda_imprimir(Vivienda* pArray, int largo);
+int vivienda_addCasaACensista(Vivienda* pArrayJulian, Vivienda* pArrayMario, Vivienda* pArrayYanina, int largo, int id, char* calle, int personas, int habitaciones, int tipoVivienda, int legajo, int* contadorViviendasJulian, int* contadorViviendasMario, int* contadorViviendasYanina);
 
 #endif /* VIVIENDA_H_ */

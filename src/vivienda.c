@@ -202,3 +202,64 @@ int vivienda_imprimir(Vivienda* pArray, int largo){
 	return retorno;
 }
 
+int vivienda_addCasaACensista(Vivienda* pArrayJulian, Vivienda* pArrayMario, Vivienda* pArrayYanina, int largo, int id, char* calle, int personas, int habitaciones, int tipoVivienda, int legajo, int* contadorViviendasJulian, int* contadorViviendasMario, int* contadorViviendasYanina){
+	int retorno = -1;
+	int i;
+	switch(legajo){
+			case 100:
+				if(pArrayJulian != NULL){
+					for(i = 0; i<largo; i++){
+						if(pArrayJulian[i].isEmpty == 1){
+							pArrayJulian[i].idVivienda = id;
+							strcpy(pArrayJulian[i].calle, calle);
+							pArrayJulian[i].cantidadPersonas = personas;
+							pArrayJulian[i].cantidadHabitaciones = habitaciones;
+							pArrayJulian[i].tipoVivienda = tipoVivienda;
+							pArrayJulian[i].legajoCensista = legajo;
+							pArrayJulian[i].isEmpty = 0;
+							contadorViviendasJulian = contadorViviendasJulian + 1;
+							break;
+
+						}
+					}
+
+				}
+				break;
+			case 101:
+				if(pArrayMario != NULL){
+					for(i = 0; i<largo; i++){
+						if(pArrayMario[i].isEmpty == 1){
+							pArrayMario[i].idVivienda = id;
+							strcpy(pArrayMario[i].calle, calle);
+							pArrayMario[i].cantidadPersonas = personas;
+							pArrayMario[i].cantidadHabitaciones = habitaciones;
+							pArrayMario[i].tipoVivienda = tipoVivienda;
+							pArrayMario[i].legajoCensista = legajo;
+							pArrayMario[i].isEmpty = 0;
+							contadorViviendasMario++;
+							break;
+						}
+					}
+				}
+				break;
+			case 102:
+				if(pArrayYanina != NULL){
+					for(i = 0; i<largo; i++){
+						if(pArrayYanina[i].isEmpty == 1){
+							pArrayYanina[i].idVivienda = id;
+							strcpy(pArrayYanina[i].calle,calle);
+							pArrayYanina[i].cantidadPersonas = personas;
+							pArrayYanina[i].cantidadHabitaciones = habitaciones;
+							pArrayYanina[i].tipoVivienda = tipoVivienda;
+							pArrayYanina[i].legajoCensista = legajo;
+							pArrayYanina[i].isEmpty = 0;
+							contadorViviendasYanina++;
+							break;
+						}
+					}
+				}
+				break;
+
+	}
+	return retorno;
+}

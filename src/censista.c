@@ -21,4 +21,16 @@ int censista_listar(Censista* pArray, int largo){
 	return retorno;
 }
 
+int censista_listarVivienda(Censista pArray, int largo){
+
+
+	printf("\nLegajo	Nombre	 Edad	 Telefono");
+
+	printf("\n%-7d %-8s %-7d %s \n", pArray.legajoCensista, pArray.nombre, pArray.edad, pArray.telefono);
+
+
+
+
+}
+
 

@@ -12,5 +12,6 @@ typedef struct{
 }Censista;
 
 int censista_listar(Censista* pArray, int largo);
+int censista_listarVivienda(Censista pArray, int largo);
 
 #endif /* CENSISTA_H_ */

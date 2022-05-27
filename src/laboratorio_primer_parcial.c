@@ -18,7 +18,6 @@
 #define VIVIENDAS_LENG 100
 #define CENSISTAS_LENG 3
 
-
 int main(void) {
 	setbuf(stdout, NULL);
 	Censista censistas[CENSISTAS_LENG] = {{100, "Julian", 19, "11 3519-6798"}, {101, "Mario", 24, "4301-54678"},{102, "Yanina", 23, "5902-37487"}};
@@ -28,11 +27,21 @@ int main(void) {
 	int id = 20000;
 	int indexPosicion;
 	int ingresoVivienda = 0;
+	Vivienda viviendasJulian[VIVIENDAS_LENG];
+	int contadorViviendasJulian =0;
+	vivienda_initArray(viviendasJulian, VIVIENDAS_LENG);
+	Vivienda viviendasMario[VIVIENDAS_LENG];
+	int contadorViviendasMario = 0;
+	vivienda_initArray(viviendasMario, VIVIENDAS_LENG);
+	Vivienda viviendasYanina[VIVIENDAS_LENG];
+	int contadorViviendasYanina =0;
+	vivienda_initArray(viviendasYanina, VIVIENDAS_LENG);
+
 
 	char opcionElegida;
 
 	do{
-		utn_getCaracter(&opcionElegida, "\n\n A.ALTA VIVIENDA \n\n B.MODIFICAR VIVIENDA \n\n C.BAJA VIVIENDA \n\n D.LISTAR VIVIENDAS \n\n E.LISTAR CENSISTAS \n\n F. SALIR \n\n", "Caracter invalido", 'A', 'F', 3);
+		utn_getCaracter(&opcionElegida, "\n\n A.ALTA VIVIENDA \n\n B.MODIFICAR VIVIENDA \n\n C.BAJA VIVIENDA \n\n D.LISTAR VIVIENDAS \n\n E.LISTAR CENSISTAS \n\n F. LISTAR CENSISTAS CON CASAS\n\n  G. SALIR \n\n", "Caracter invalido", 'A', 'G', 3);
 		switch(opcionElegida){
 			case 'A':
 					if(utn_getString(auxVivienda.calle, CALLE_LENG, "Ingrese la calle de la vivienda \n", "Calle invalida \n", 3) == 0 &&
@@ -45,6 +54,7 @@ int main(void) {
 						id++;
 
 						vivienda_add(viviendas, VIVIENDAS_LENG, auxVivienda.idVivienda, auxVivienda.calle, auxVivienda.cantidadPersonas, auxVivienda.cantidadHabitaciones, auxVivienda.tipoVivienda, auxVivienda.legajoCensista);
+						vivienda_addCasaACensista(viviendasJulian, viviendasMario, viviendasYanina, VIVIENDAS_LENG,  auxVivienda.idVivienda, auxVivienda.calle, auxVivienda.cantidadPersonas, auxVivienda.cantidadHabitaciones, auxVivienda.tipoVivienda, auxVivienda.legajoCensista,&contadorViviendasJulian, &contadorViviendasMario, &contadorViviendasYanina);
 						ingresoVivienda = 1;
 					}
 
@@ -92,14 +102,23 @@ int main(void) {
 					censista_listar(censistas, CENSISTAS_LENG);
 				break;
 			case 'F':
-				printf("Saliendo...");
+				printf("Contador viviendas julian = %d", contadorViviendasJulian );
+				censista_listarVivienda(censistas[0], CENSISTAS_LENG);
+				vivienda_imprimir(viviendasJulian, VIVIENDAS_LENG);
+				censista_listarVivienda(censistas[1], CENSISTAS_LENG);
+				vivienda_imprimir(viviendasMario, VIVIENDAS_LENG);
+				censista_listarVivienda(censistas[2], CENSISTAS_LENG);
+				vivienda_imprimir(viviendasYanina, VIVIENDAS_LENG);
+				break;
+			case 'G':
+				printf("saliendo...");
 				break;
 			default:
 				printf("Opcion Invalida!");
 		}
 
 
-	}while(opcionElegida != 'F');
+	}while(opcionElegida != 'G');
 
 
 
